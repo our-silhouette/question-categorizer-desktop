@@ -1,0 +1,164 @@
+name: Build Standalone Desktop Applications
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_title:
+        description: 'Release Title / Version Tag (e.g. v1.0.0)'
+        required: false
+        default: 'v1.0.0'
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  # ============================================================================
+  # 1. WINDOWS BUILD (64-bit EXE)
+  # ============================================================================
+  build-windows:
+    name: Build Windows Application (.exe)
+    runs-on: windows-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pyinstaller
+
+      - name: Build Windows App with PyInstaller
+        run: |
+          pyinstaller --clean desktop.spec
+
+      - name: Compress Windows Distribution
+        shell: pwsh
+        run: |
+          Compress-Archive -Path dist/QuestionCategorizer -DestinationPath QuestionCategorizer-Windows.zip
+
+      - name: Upload Windows Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: QuestionCategorizer-Windows
+          path: QuestionCategorizer-Windows.zip
+          retention-days: 30
+
+  # ============================================================================
+  # 2. MACOS BUILD - APPLE SILICON (M1/M2/M3/M4, ARM64)
+  # ============================================================================
+  build-macos-arm64:
+    name: Build macOS Application (Apple Silicon M1/M2/M3/M4)
+    runs-on: macos-14
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Python Dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          pip3 install -r requirements.txt
+          pip3 install pyinstaller
+
+      - name: Build macOS App with PyInstaller
+        run: |
+          pyinstaller --clean desktop.spec
+
+      - name: Compress macOS Distribution (.app)
+        run: |
+          cd dist
+          zip -r -y ../QuestionCategorizer-macOS-AppleSilicon.zip QuestionCategorizer.app
+          cd ..
+
+      - name: Upload macOS Apple Silicon Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: QuestionCategorizer-macOS-AppleSilicon
+          path: QuestionCategorizer-macOS-AppleSilicon.zip
+          retention-days: 30
+
+  # ============================================================================
+  # 3. MACOS BUILD - INTEL CHIPSET (x86_64)
+  # ============================================================================
+  build-macos-intel:
+    name: Build macOS Application (Intel Chipset x86_64)
+    runs-on: macos-13
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Python Dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          pip3 install -r requirements.txt
+          pip3 install pyinstaller
+
+      - name: Build macOS App with PyInstaller
+        run: |
+          pyinstaller --clean desktop.spec
+
+      - name: Compress macOS Distribution (.app)
+        run: |
+          cd dist
+          zip -r -y ../QuestionCategorizer-macOS-Intel.zip QuestionCategorizer.app
+          cd ..
+
+      - name: Upload macOS Intel Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: QuestionCategorizer-macOS-Intel
+          path: QuestionCategorizer-macOS-Intel.zip
+          retention-days: 30
+
+  # ============================================================================
+  # 4. PUBLISH GITHUB RELEASE (On version tags)
+  # ============================================================================
+  publish-release:
+    name: Create GitHub Release
+    needs: [build-windows, build-macos-arm64, build-macos-intel]
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download Windows Package
+        uses: actions/download-artifact@v4
+        with:
+          name: QuestionCategorizer-Windows
+
+      - name: Download macOS Apple Silicon Package
+        uses: actions/download-artifact@v4
+        with:
+          name: QuestionCategorizer-macOS-AppleSilicon
+
+      - name: Download macOS Intel Package
+        uses: actions/download-artifact@v4
+        with:
+          name: QuestionCategorizer-macOS-Intel
+
+      - name: Publish GitHub Release with Artifacts
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            QuestionCategorizer-Windows.zip
+            QuestionCategorizer-macOS-AppleSilicon.zip
+            QuestionCategorizer-macOS-Intel.zip
+          generate_release_notes: true
