@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini API Key Setup Guide — Question Categorizer</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        @page { margin: 2cm; size: A4; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background: #ffffff;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 40px 60px;
+        }
+
+        /* ── Header ── */
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #4285f4;
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #4285f4 0%, #34a853 50%, #fbbc05 75%, #ea4335 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 20px;
+        }
+
+        .logo span {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a1a2e;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 8px;
+        }
+
+        .header .subtitle {
+            font-size: 15px;
+            color: #5f6368;
+        }
+
+        .version {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 6px 16px;
+            background: #e8f0fe;
+            color: #1a73e8;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* ── Sections ── */
+        .section { margin-bottom: 40px; page-break-inside: avoid; }
+
+        .section h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a1a2e;
+            border-left: 4px solid #4285f4;
+            padding-left: 16px;
+            margin-bottom: 20px;
+        }
+
+        /* ── Step Cards ── */
+        .step-card {
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -14px;
+            left: 24px;
+            width: 28px;
+            height: 28px;
+            background: #4285f4;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            box-shadow: 0 2px 8px rgba(66, 133, 244, 0.3);
+        }
+
+        .step-card h3 {
+            margin-top: 0;
+            margin-bottom: 12px;
+            font-size: 17px;
+            color: #1a1a2e;
+        }
+
+        .step-card p { color: #3c4043; margin-bottom: 12px; }
+        .step-card ul { margin-left: 20px; color: #3c4043; }
+        .step-card ol { margin-left: 20px; color: #3c4043; }
+        .step-card li { margin-bottom: 10px; }
+
+        /* ── Highlight box ── */
+        .highlight-box {
+            background: #ffffff;
+            border: 1px solid #dcdfe6;
+            border-radius: 6px;
+            padding: 10px 14px;
+            font-family: monospace;
+            font-weight: 600;
+            color: #2563eb;
+            display: inline-block;
+            margin: 4px 0;
+        }
+
+        /* ── Callouts ── */
+        .callout {
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 16px 0;
+            border-left: 4px solid;
+        }
+
+        .callout.info    { background: #e8f0fe; border-color: #4285f4; }
+        .callout.warning { background: #fff3e0; border-color: #f9ab00; }
+        .callout.success { background: #e8f5e9; border-color: #34a853; }
+        .callout.error   { background: #fce8e6; border-color: #ea4335; }
+
+        .callout-title {
+            font-weight: 600;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .callout.info    .callout-title { color: #1a73e8; }
+        .callout.warning .callout-title { color: #f57c00; }
+        .callout.success .callout-title { color: #2e7d32; }
+        .callout.error   .callout-title { color: #c62828; }
+
+        .callout p { color: #374151; font-size: 14px; margin: 0; }
+
+        /* ── Links ── */
+        a { color: #1a73e8; text-decoration: none; font-weight: 500; }
+        a:hover { text-decoration: underline; }
+
+        .btn-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #4285f4;
+            color: white !important;
+            border-radius: 6px;
+            font-weight: 600;
+            margin: 8px 0;
+        }
+
+        .btn-link:hover { background: #1a73e8; text-decoration: none; }
+
+        /* ── Quick summary box ── */
+        .quick-summary {
+            background: #e8f5e9;
+            border: 1px solid #a5d6a7;
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 32px;
+        }
+
+        .quick-summary h3 {
+            color: #2e7d32;
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+
+        .quick-summary ol { margin-left: 20px; color: #374151; }
+        .quick-summary li { margin-bottom: 6px; font-size: 14px; }
+
+        /* ── Footer ── */
+        .footer {
+            margin-top: 60px;
+            padding-top: 24px;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+            color: #80868b;
+            font-size: 13px;
+        }
+
+        .footer-links {
+            margin-top: 12px;
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        /* ── Print ── */
+        @media print {
+            body { padding: 0; max-width: none; }
+            .section { page-break-inside: avoid; }
+            .step-card { page-break-inside: avoid; }
+            .callout { page-break-inside: avoid; }
+        }
+
+        @media screen and (max-width: 768px) {
+            body { padding: 20px; }
+            .header h1 { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="logo">
+        <div class="logo-icon">G</div>
+        <span>Question Categorizer</span>
+    </div>
+    <h1>Gemini API Key Setup Guide</h1>
+    <p class="subtitle">A simple, step-by-step beginner's guide to getting your free Google AI API key</p>
+    <span class="version">Version 1.2 &nbsp;•&nbsp; 2026</span>
+</header>
+
+<!-- Quick Summary -->
+<div class="quick-summary">
+    <h3>⚡ Quick Summary (under 3 minutes)</h3>
+    <ol>
+        <li>Go to <a href="https://aistudio.google.com/app/apikey" target="_blank">aistudio.google.com/app/apikey</a></li>
+        <li>Sign in with your Google account</li>
+        <li>Click <strong>"Create API Key"</strong></li>
+        <li>Name it <strong>Question Categorizer</strong> and create a project with the same name</li>
+        <li>Click <strong>"Copy key"</strong> and save it somewhere safe</li>
+        <li>Paste it into the app's <strong>⚙️ Configuration</strong> sidebar when you open Question Categorizer</li>
+    </ol>
+</div>
+
+<section class="section">
+    <h2>Generate Your Free API Key — Step by Step</h2>
+
+    <div class="step-card">
+        <span class="step-number">1</span>
+        <h3>Open Google AI Studio</h3>
+        <p>Open your web browser (Chrome, Edge, Safari, or Firefox) and click the link below:</p>
+        <p style="text-align: center; margin: 16px 0;">
+            <a href="https://aistudio.google.com/app/apikey" target="_blank" class="btn-link">🔗 Open Google AI Studio API Keys Page</a>
+        </p>
+    </div>
+
+    <div class="step-card">
+        <span class="step-number">2</span>
+        <h3>Sign In with Your Google Account</h3>
+        <p>If prompted, sign in using your Google account (Gmail, Google Workspace, etc.). If you don't have one, click <strong>"Create account"</strong> — it's free.</p>
+        <div class="callout info">
+            <div class="callout-title">💡 Tip</div>
+            <p>Using your personal Gmail account keeps your API key free and accessible anytime.</p>
+        </div>
+    </div>
+
+    <div class="step-card">
+        <span class="step-number">3</span>
+        <h3>Click "Create API Key"</h3>
+        <p>Once signed in, click the prominent blue <strong>"Create API Key"</strong> button near the top of the page.</p>
+    </div>
+
+    <div class="step-card">
+        <span class="step-number">4</span>
+        <h3>Name Your Key &amp; Create a Project</h3>
+        <p>A dialog window will appear. Follow these steps exactly:</p>
+        <ol>
+            <li>
+                <strong>Set Key Name:</strong> In the "Key Name" field, type:<br>
+                <span class="highlight-box">Question Categorizer</span>
+            </li>
+            <li>
+                <strong>Select "Create Project":</strong> In the dropdown below the name field, click <strong>"Create Project"</strong>.
+            </li>
+            <li>
+                <strong>Enter Project Name:</strong> Type:<br>
+                <span class="highlight-box">Question Categorizer</span><br>
+                Then click the <strong>"Create project"</strong> button inside that window.
+            </li>
+            <li>
+                <strong>Click "Create Key":</strong> Back in the main dialog, click the blue <strong>"Create key"</strong> button.
+            </li>
+        </ol>
+        <div class="callout success">
+            <div class="callout-title">✅ Tip</div>
+            <p>Using <strong>Question Categorizer</strong> for both the key name and project name keeps your setup clean and easy to find later.</p>
+        </div>
+    </div>
+
+    <div class="step-card">
+        <span class="step-number">5</span>
+        <h3>Copy &amp; Save Your API Key</h3>
+        <p>A final window appears showing your new API key with a <strong>"Copy key"</strong> button.</p>
+        <ol>
+            <li>Click <strong>"Copy key"</strong> (or manually select and copy the text).</li>
+            <li>Open a notes app, text file, or password manager on your computer and paste the key there.</li>
+            <li>Keep this file saved — you'll paste your key into the app's sidebar whenever you use Question Categorizer.</li>
+        </ol>
+        <div class="callout warning">
+            <div class="callout-title">⚠️ Security Notice</div>
+            <p>Treat your API key like a private password. Never post it in emails, messages, or online. If it gets exposed, delete it at <a href="https://aistudio.google.com/app/apikey" target="_blank">aistudio.google.com</a> and create a new one.</p>
+        </div>
+    </div>
+
+    <div class="step-card">
+        <span class="step-number">6</span>
+        <h3>Paste the Key into Question Categorizer</h3>
+        <p>Open the <strong>Question Categorizer</strong> app. In the left sidebar under <strong>⚙️ Configuration</strong>, you'll see a field labelled <em>"Gemini API Key"</em>. Paste your key there and press Enter.</p>
+        <div class="callout info">
+            <div class="callout-title">💡 Note</div>
+            <p>The key is only kept in memory for your current session. It is <strong>never</strong> saved to disk. You'll need to paste it each time you open the app.</p>
+        </div>
+    </div>
+
+    <div class="step-card">
+        <span class="step-number">7</span>
+        <h3>Verify the Key Works (Optional)</h3>
+        <p>You can test your key in Google AI Studio:</p>
+        <ol>
+            <li>Click <strong>"Test in AI Studio"</strong>, or go to <a href="https://aistudio.google.com/prompts/new_chat" target="_blank">aistudio.google.com/prompts/new_chat</a></li>
+            <li>Select <strong>Gemini 2.0 Flash</strong> as your model</li>
+            <li>Type a test prompt like: <em>"What is 2 + 2?"</em></li>
+            <li>Click <strong>Run</strong> — if you get a response, your key is active and ready!</li>
+        </ol>
+    </div>
+</section>
+
+<section class="section">
+    <h2>About the Free Tier</h2>
+    <div class="callout success">
+        <div class="callout-title">✅ Free tier is more than enough for typical use</div>
+        <p>Google AI Studio's free plan allows up to <strong>1,500 requests per day</strong> with Gemini 2.0 Flash. A typical question paper categorization run uses 30–100 requests, so you can run the tool many times daily at no cost.</p>
+    </div>
+    <br>
+    <div class="callout info">
+        <div class="callout-title">💡 If you hit the daily limit</div>
+        <p>You'll see a "quota exceeded" error in the app. Simply wait a few hours for the quota to reset, or visit <a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio</a> to check your usage and optionally upgrade.</p>
+    </div>
+</section>
+
+<footer class="footer">
+    <p><strong>Question Categorizer</strong> — Gemini API Key Setup Guide v1.2</p>
+    <div class="footer-links">
+        <a href="https://aistudio.google.com/app/apikey" target="_blank">Get API Key</a>
+        <a href="https://ai.google.dev/gemini-api/docs" target="_blank">Gemini API Docs</a>
+        <a href="https://aistudio.google.com" target="_blank">Google AI Studio</a>
+    </div>
+    <p style="margin-top: 16px; font-size: 12px;">
+        © 2026 Question Categorizer &nbsp;•&nbsp; For questions, contact the person who shared this app with you.
+    </p>
+</footer>
+
+</body>
+</html>

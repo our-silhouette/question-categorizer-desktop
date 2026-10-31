@@ -41,6 +41,7 @@ jobs:
       - name: Compress Windows Distribution
         shell: pwsh
         run: |
+          Copy-Item -Recurse -Force docs dist/QuestionCategorizer/docs
           Compress-Archive -Path dist/QuestionCategorizer -DestinationPath QuestionCategorizer-Windows.zip
 
       - name: Upload Windows Artifact
@@ -78,8 +79,10 @@ jobs:
 
       - name: Compress macOS Distribution (.app)
         run: |
+          mkdir -p dist/docs
+          cp -r docs/ dist/docs/
           cd dist
-          zip -r -y ../QuestionCategorizer-macOS-AppleSilicon.zip QuestionCategorizer.app
+          zip -r -y ../QuestionCategorizer-macOS-AppleSilicon.zip QuestionCategorizer.app docs/
           cd ..
 
       - name: Upload macOS Apple Silicon Artifact
@@ -117,8 +120,10 @@ jobs:
 
       - name: Compress macOS Distribution (.app)
         run: |
+          mkdir -p dist/docs
+          cp -r docs/ dist/docs/
           cd dist
-          zip -r -y ../QuestionCategorizer-macOS-Intel.zip QuestionCategorizer.app
+          zip -r -y ../QuestionCategorizer-macOS-Intel.zip QuestionCategorizer.app docs/
           cd ..
 
       - name: Upload macOS Intel Artifact

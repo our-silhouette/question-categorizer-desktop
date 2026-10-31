@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Guide — Question Categorizer</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        @page { margin: 2cm; size: A4; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.65;
+            color: #1a1a2e;
+            background: #ffffff;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 40px 60px;
+        }
+
+        /* ── Header ── */
+        .header {
+            text-align: center;
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+            border-bottom: 3px solid #7c3aed;
+        }
+
+        .logo-row {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+
+        .logo-icon {
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, #7c3aed 0%, #2563eb 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 22px;
+            box-shadow: 0 4px 14px rgba(124, 58, 237, 0.35);
+        }
+
+        .logo-name {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1a1a2e;
+            letter-spacing: -0.3px;
+        }
+
+        .header h1 {
+            font-size: 30px;
+            font-weight: 800;
+            color: #1a1a2e;
+            margin-bottom: 8px;
+        }
+
+        .header .subtitle {
+            font-size: 15px;
+            color: #5f6368;
+        }
+
+        .version-badge {
+            display: inline-block;
+            margin-top: 14px;
+            padding: 5px 16px;
+            background: #ede9fe;
+            color: #6d28d9;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* ── TOC ── */
+        .toc {
+            background: #f8f7ff;
+            border: 1px solid #ddd6fe;
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin-bottom: 40px;
+        }
+
+        .toc h2 {
+            font-size: 15px;
+            font-weight: 700;
+            color: #6d28d9;
+            margin-bottom: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .toc ol { margin-left: 20px; }
+        .toc li { margin-bottom: 6px; font-size: 14px; }
+        .toc a { color: #2563eb; text-decoration: none; font-weight: 500; }
+        .toc a:hover { text-decoration: underline; }
+
+        /* ── Sections ── */
+        .section { margin-bottom: 44px; page-break-inside: avoid; }
+
+        .section h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a1a2e;
+            border-left: 4px solid #7c3aed;
+            padding-left: 16px;
+            margin-bottom: 20px;
+        }
+
+        .section h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #3c4043;
+            margin: 22px 0 10px;
+        }
+
+        /* ── Step Cards ── */
+        .step-card {
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 24px 24px 20px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -14px;
+            left: 22px;
+            width: 28px;
+            height: 28px;
+            background: #7c3aed;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            box-shadow: 0 2px 8px rgba(124, 58, 237, 0.35);
+        }
+
+        .step-card h3 { margin-top: 4px; margin-bottom: 10px; font-size: 17px; color: #1a1a2e; }
+        .step-card p { color: #3c4043; margin-bottom: 10px; }
+        .step-card ul, .step-card ol { margin-left: 20px; color: #3c4043; }
+        .step-card li { margin-bottom: 8px; }
+
+        /* ── OS Grid ── */
+        .os-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .os-card {
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .os-card.windows { border-top: 3px solid #0078d4; }
+        .os-card.mac     { border-top: 3px solid #555; }
+
+        .os-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: 0.3px;
+        }
+
+        .os-badge.windows { background: #dbeafe; color: #0078d4; }
+        .os-badge.mac     { background: #f3f4f6; color: #374151; }
+
+        .os-card h3 { font-size: 15px; margin-top: 0; margin-bottom: 10px; color: #1a1a2e; }
+        .os-card ol { margin-left: 18px; color: #3c4043; }
+        .os-card li { margin-bottom: 8px; font-size: 14px; }
+
+        /* ── Workflow ── */
+        .workflow {
+            display: flex;
+            align-items: flex-start;
+            gap: 0;
+            margin: 24px 0;
+            flex-wrap: wrap;
+        }
+
+        .workflow-step { flex: 1; min-width: 110px; text-align: center; padding: 0 8px; }
+
+        .workflow-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            background: #ede9fe;
+        }
+
+        .workflow-step p { font-size: 13px; color: #374151; font-weight: 600; }
+
+        .workflow-arrow { margin-top: 22px; font-size: 20px; color: #9ca3af; }
+
+        /* ── Callouts ── */
+        .callout {
+            padding: 14px 18px;
+            border-radius: 8px;
+            margin: 14px 0;
+            border-left: 4px solid;
+        }
+
+        .callout.info    { background: #ede9fe; border-color: #7c3aed; }
+        .callout.warning { background: #fff3e0; border-color: #f9ab00; }
+        .callout.success { background: #e8f5e9; border-color: #34a853; }
+        .callout.tip     { background: #e8f0fe; border-color: #2563eb; }
+
+        .callout-title {
+            font-weight: 700;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .callout.info    .callout-title { color: #6d28d9; }
+        .callout.warning .callout-title { color: #f57c00; }
+        .callout.success .callout-title { color: #2e7d32; }
+        .callout.tip     .callout-title { color: #1a73e8; }
+
+        .callout p { color: #374151; font-size: 14px; margin: 0; }
+
+        /* ── Table ── */
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+        th { background: #7c3aed; color: white; padding: 10px 14px; text-align: left; font-weight: 600; }
+        td { padding: 10px 14px; border-bottom: 1px solid #e5e7eb; color: #374151; }
+        tr:nth-child(even) td { background: #f9fafb; }
+
+        /* ── Code ── */
+        .code-box {
+            background: #1e1e2e;
+            color: #a6e3a1;
+            font-family: 'Courier New', monospace;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 14px;
+            display: inline-block;
+            margin: 4px 0;
+        }
+
+        code {
+            background: #f3f4f6;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            color: #374151;
+        }
+
+        /* ── FAQ ── */
+        .faq-item {
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin-bottom: 14px;
+        }
+
+        .faq-q { font-weight: 700; color: #1a1a2e; margin-bottom: 8px; font-size: 15px; }
+        .faq-a { color: #3c4043; font-size: 14px; }
+
+        /* ── Links ── */
+        a { color: #2563eb; text-decoration: none; font-weight: 500; }
+        a:hover { text-decoration: underline; }
+
+        .btn-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #7c3aed;
+            color: white !important;
+            border-radius: 8px;
+            font-weight: 600;
+            margin: 8px 0;
+        }
+
+        .btn-link:hover { background: #6d28d9; text-decoration: none; }
+
+        /* ── Footer ── */
+        .footer {
+            margin-top: 60px;
+            padding-top: 24px;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+            color: #80868b;
+            font-size: 13px;
+        }
+
+        .footer-links {
+            margin-top: 12px;
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        /* ── Print ── */
+        @media print {
+            body { padding: 0; max-width: none; }
+            .section { page-break-inside: avoid; }
+            .step-card { page-break-inside: avoid; }
+            .os-grid { page-break-inside: avoid; }
+            .callout { page-break-inside: avoid; }
+        }
+
+        @media screen and (max-width: 768px) {
+            body { padding: 20px; }
+            .os-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="logo-row">
+        <div class="logo-icon">QC</div>
+        <span class="logo-name">Question Categorizer</span>
+    </div>
+    <h1>User Guide</h1>
+    <p class="subtitle">Everything you need to install, launch, and use the app — no technical background required</p>
+    <span class="version-badge">Version 1.0 &nbsp;•&nbsp; 2026</span>
+</header>
+
+<nav class="toc">
+    <h2>📋 Contents</h2>
+    <ol>
+        <li><a href="#what-is-it">What is Question Categorizer?</a></li>
+        <li><a href="#requirements">System Requirements</a></li>
+        <li><a href="#install">Installation &amp; First Launch</a></li>
+        <li><a href="#api-key">Getting Your Gemini API Key</a></li>
+        <li><a href="#using">Using the App — Step by Step</a></li>
+        <li><a href="#output">Understanding Your Results</a></li>
+        <li><a href="#exit">Closing the App</a></li>
+        <li><a href="#faq">Troubleshooting &amp; FAQ</a></li>
+    </ol>
+</nav>
+
+<!-- SECTION 1 -->
+<section class="section" id="what-is-it">
+    <h2>1. What is Question Categorizer?</h2>
+    <p>
+        <strong>Question Categorizer</strong> is a desktop application powered by Google's Gemini AI.
+        It reads your question paper (PDF or Word file), matches each question to your curriculum's
+        Knowledge Components (KCs), and produces a detailed Excel report — automatically.
+    </p>
+    <br>
+    <div class="workflow">
+        <div class="workflow-step">
+            <div class="workflow-icon">📄</div>
+            <p>Upload Question Paper</p>
+        </div>
+        <div class="workflow-arrow">→</div>
+        <div class="workflow-step">
+            <div class="workflow-icon">📚</div>
+            <p>Upload KC Syllabus</p>
+        </div>
+        <div class="workflow-arrow">→</div>
+        <div class="workflow-step">
+            <div class="workflow-icon">🤖</div>
+            <p>AI Categorizes</p>
+        </div>
+        <div class="workflow-arrow">→</div>
+        <div class="workflow-step">
+            <div class="workflow-icon">📊</div>
+            <p>Download Excel Report</p>
+        </div>
+    </div>
+    <div class="callout info">
+        <div class="callout-title">💡 No coding needed</div>
+        <p>The app runs entirely in your web browser. Just double-click to open it — no installation wizards, no Python, no terminal.</p>
+    </div>
+</section>
+
+<!-- SECTION 2 -->
+<section class="section" id="requirements">
+    <h2>2. System Requirements</h2>
+    <table>
+        <tr>
+            <th>Requirement</th>
+            <th>Windows</th>
+            <th>macOS (Apple Silicon)</th>
+            <th>macOS (Intel)</th>
+        </tr>
+        <tr>
+            <td><strong>Operating System</strong></td>
+            <td>Windows 10 / 11 (64-bit)</td>
+            <td>macOS 11 or newer</td>
+            <td>macOS 11 or newer</td>
+        </tr>
+        <tr>
+            <td><strong>Processor</strong></td>
+            <td>Any modern 64-bit CPU</td>
+            <td>Apple M1 / M2 / M3 / M4</td>
+            <td>Intel Core (any generation)</td>
+        </tr>
+        <tr>
+            <td><strong>RAM</strong></td>
+            <td colspan="3" style="text-align:center;">4 GB minimum (8 GB recommended)</td>
+        </tr>
+        <tr>
+            <td><strong>Internet</strong></td>
+            <td colspan="3" style="text-align:center;">✅ Required (AI processing happens in Google's cloud)</td>
+        </tr>
+        <tr>
+            <td><strong>Python / Git?</strong></td>
+            <td colspan="3" style="text-align:center;">❌ Not needed — the app is fully self-contained</td>
+        </tr>
+        <tr>
+            <td><strong>Gemini API Key</strong></td>
+            <td colspan="3" style="text-align:center;">✅ Required — free from Google AI Studio (see Section 4)</td>
+        </tr>
+    </table>
+    <div class="callout tip">
+        <div class="callout-title">💡 Which Mac do I have?</div>
+        <p>Click the Apple menu () → <em>"About This Mac"</em>. If it says <strong>Apple M1</strong> (or M2/M3/M4), use the <strong>Apple Silicon</strong> ZIP. If it says <strong>Intel</strong>, use the <strong>Intel</strong> ZIP.</p>
+    </div>
+</section>
+
+<!-- SECTION 3 -->
+<section class="section" id="install">
+    <h2>3. Installation &amp; First Launch</h2>
+
+    <div class="os-grid">
+        <div class="os-card windows">
+            <span class="os-badge windows">🪟 WINDOWS</span>
+            <h3>Install &amp; Open on Windows</h3>
+            <ol>
+                <li><strong>Download</strong> <code>QuestionCategorizer-Windows.zip</code></li>
+                <li><strong>Extract:</strong> Right-click the ZIP → <em>"Extract All…"</em> → choose a folder (Desktop or Documents works well)</li>
+                <li>Open the extracted folder and <strong>double-click</strong> <code>QuestionCategorizer.exe</code></li>
+                <li><strong>SmartScreen alert?</strong> Click <em>"More info"</em> then <em>"Run anyway"</em> — only needed once</li>
+                <li>A console window opens, then <strong>your browser automatically launches</strong> the app</li>
+            </ol>
+        </div>
+
+        <div class="os-card mac">
+            <span class="os-badge mac">🍎 macOS</span>
+            <h3>Install &amp; Open on Mac</h3>
+            <ol>
+                <li><strong>Download</strong> the correct ZIP:
+                    <ul style="margin-top:6px; margin-left:16px;">
+                        <li>M1/M2/M3/M4 → <code>…-AppleSilicon.zip</code></li>
+                        <li>Intel → <code>…-Intel.zip</code></li>
+                    </ul>
+                </li>
+                <li><strong>Double-click</strong> the ZIP to extract <code>QuestionCategorizer.app</code></li>
+                <li><strong>Drag</strong> it into your <strong>Applications</strong> folder</li>
+                <li><strong>First launch:</strong> <em>Right-click</em> the app → <em>"Open"</em> → click <em>"Open"</em> in the dialog — only needed once</li>
+                <li>Your browser opens automatically with the app ready</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="callout warning">
+        <div class="callout-title">⚠️ Why the security warning?</div>
+        <p>Both Windows SmartScreen and macOS Gatekeeper show warnings for apps distributed outside official stores. This is normal for independent software. The warning only appears on the very first launch.</p>
+    </div>
+</section>
+
+<!-- SECTION 4 -->
+<section class="section" id="api-key">
+    <h2>4. Setting Up Your Gemini API Key</h2>
+    <p>
+        The app uses Google's Gemini AI, which requires a free API key from Google AI Studio.
+        The complete process of generating your API key, saving it safely, and entering it into the app
+        is covered in detail in the companion document included in this folder:
+    </p>
+    <br>
+    <div class="callout info">
+        <div class="callout-title">📖 See the dedicated guide for this step</div>
+        <p>
+            Open <strong>Gemini_API_Key_Setup_Guide.html</strong> (located in the same folder as this document)
+            for full step-by-step instructions on generating your API key. Once you have your key ready,
+            return to <strong>Section 5</strong> of this guide to continue.
+        </p>
+    </div>
+</section>
+
+<!-- SECTION 5 -->
+<section class="section" id="using">
+    <h2>5. Using the App — Step by Step</h2>
+
+    <div class="step-card">
+        <span class="step-number">1</span>
+        <h3>Enter Your API Key</h3>
+        <p>In the <strong>left sidebar</strong>, under <strong>⚙️ Configuration</strong>, paste your Gemini API key.</p>
+    </div>
+
+    <div class="step-card">
+        <span class="step-number">2</span>
+        <h3>Upload Your Question Paper</h3>
+        <p>Under <strong>📄 Question File</strong>, click <em>"Browse files"</em> and select your question paper.</p>
+        <ul>
+            <li><strong>PDF</strong> — standard question paper PDFs</li>
+            <li><strong>Word (.docx)</strong> — Microsoft Word documents</li>
+        </ul>
+    </div>
+
+    <div class="step-card">
+        <span class="step-number">3</span>
+        <h3>Upload Your KC / Syllabus File</h3>
+        <p>Under <strong>📚 Master Knowledge Components</strong>, upload your curriculum hierarchy file.</p>
+        <ul>
+            <li><strong>Excel (.xlsx)</strong> — KC hierarchy spreadsheet</li>
+            <li><strong>Word (.docx)</strong> — structured KC document</li>
+        </ul>
+    </div>
+
+    <div class="step-card">
+        <span class="step-number">4</span>
+        <h3>Start Categorization</h3>
+        <p>Click the blue <strong>"🚀 Start Categorization Pipeline"</strong> button. The AI will process your files — typically <strong>1–3 minutes</strong> depending on question count and internet speed.</p>
+        <div class="callout info">
+            <div class="callout-title">💡 What's happening</div>
+            <p>Each question is sent to Google's Gemini AI along with your KC structure. Gemini matches every question to the best-fitting KC and sub-KC, then returns the categorized result.</p>
+        </div>
+    </div>
+
+    <div class="step-card">
+        <span class="step-number">5</span>
+        <h3>Download Your Results</h3>
+        <p>When done, click <strong>"📥 Download Categorization Report (.xlsx)"</strong> to save your results as an Excel file.</p>
+    </div>
+</section>
+
+<!-- SECTION 6 -->
+<section class="section" id="output">
+    <h2>6. Understanding Your Results</h2>
+    <p>The downloaded Excel report contains one row per question:</p>
+    <br>
+    <table>
+        <tr>
+            <th>Column</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><strong>Question Number</strong></td>
+            <td>As it appears in the original paper</td>
+        </tr>
+        <tr>
+            <td><strong>Question Text</strong></td>
+            <td>Full question text extracted by the AI</td>
+        </tr>
+        <tr>
+            <td><strong>Topic / KC</strong></td>
+            <td>Top-level Knowledge Component matched to this question</td>
+        </tr>
+        <tr>
+            <td><strong>Sub-KC</strong></td>
+            <td>Specific sub-topic within the KC</td>
+        </tr>
+        <tr>
+            <td><strong>Confidence</strong></td>
+            <td>AI confidence level for the match</td>
+        </tr>
+        <tr>
+            <td><strong>Marks</strong></td>
+            <td>Marks allocated (where available in the source document)</td>
+        </tr>
+    </table>
+</section>
+
+<!-- SECTION 7 -->
+<section class="section" id="exit">
+    <h2>7. Closing the App</h2>
+    <ol style="margin-left: 20px; color: #374151;">
+        <li style="margin-bottom: 10px;">Close the browser tab showing the Question Categorizer.</li>
+        <li style="margin-bottom: 10px;">Find the <strong>console window</strong> that opened at launch.</li>
+        <li style="margin-bottom: 10px;">Press <strong>Ctrl + C</strong> inside it, or simply close the window.</li>
+    </ol>
+    <div class="callout tip">
+        <div class="callout-title">💡 Next time</div>
+        <p>Just double-click the app again — it starts a fresh session each time.</p>
+    </div>
+</section>
+
+<!-- SECTION 8 -->
+<section class="section" id="faq">
+    <h2>8. Troubleshooting &amp; FAQ</h2>
+
+    <div class="faq-item">
+        <div class="faq-q">❓ The browser didn't open automatically.</div>
+        <div class="faq-a">Look at the console window — it shows a URL like <span class="code-box">http://localhost:8501</span>. Open your browser and type that address manually.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q">❓ I see an "Invalid API Key" error.</div>
+        <div class="faq-a">Re-copy the full key from <a href="https://aistudio.google.com/app/apikey" target="_blank">aistudio.google.com</a> — make sure there are no extra spaces before or after it.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q">❓ macOS says "cannot verify the developer" and won't open the app.</div>
+        <div class="faq-a"><strong>Right-click</strong> (or Control-click) the <code>.app</code> file → choose <strong>"Open"</strong> → click <strong>"Open"</strong> in the dialog. Only needed once.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q">❓ Windows shows "Windows protected your PC" (SmartScreen).</div>
+        <div class="faq-a">Click <strong>"More info"</strong> → then <strong>"Run anyway"</strong>. Standard warning for apps outside the Microsoft Store — safe to proceed.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q">❓ The app is slow / taking a long time.</div>
+        <div class="faq-a">Processing speed depends on your internet connection and question count. Large papers with 50+ questions may take 3–5 minutes. This is normal — Gemini AI is carefully reading and matching each question.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q">❓ I see a "quota exceeded" error.</div>
+        <div class="faq-a">The free tier has a daily request limit. Wait a few hours and try again, or check your quota at <a href="https://aistudio.google.com" target="_blank">aistudio.google.com</a>.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q">❓ My file format is not supported.</div>
+        <div class="faq-a">Question paper: <strong>PDF</strong> or <strong>Word (.docx)</strong>. KC file: <strong>Excel (.xlsx)</strong> or <strong>Word (.docx)</strong>. Convert your file to one of these before uploading.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q">❓ The app opened but the browser shows a blank or error page.</div>
+        <div class="faq-a">Wait 5–10 seconds and refresh the browser tab. The local server sometimes takes a moment on the very first launch.</div>
+    </div>
+</section>
+
+<footer class="footer">
+    <p><strong>Question Categorizer</strong> — User Guide v1.0 &nbsp;•&nbsp; 2026</p>
+    <div class="footer-links">
+        <a href="https://aistudio.google.com/app/apikey" target="_blank">Get Free API Key</a>
+        <a href="https://ai.google.dev/gemini-api/docs" target="_blank">Gemini API Docs</a>
+    </div>
+    <p style="margin-top: 14px; font-size: 12px;">
+        © 2026 Question Categorizer &nbsp;•&nbsp; For questions, contact the person who shared this app with you.
+    </p>
+</footer>
+
+</body>
+</html>
