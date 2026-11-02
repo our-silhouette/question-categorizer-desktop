@@ -44,12 +44,18 @@ Download the package matching your operating system (no installation or setup re
 1. **Download:**
    * For M1/M2/M3/M4 Macs: [Download Apple Silicon ZIP](https://github.com/our-silhouette/question-categorizer-desktop/releases/download/v1.0.1/QuestionCategorizer-macOS-AppleSilicon.zip)
    * For Intel Macs: [Download Intel Mac ZIP](https://github.com/our-silhouette/question-categorizer-desktop/releases/download/v1.0.1/QuestionCategorizer-macOS-Intel.zip)
-2. **Extract:** Double-click the `.zip` file to extract `QuestionCategorizer.app`.
-3. **Move:** Drag `QuestionCategorizer.app` into your **Applications** folder.
-4. **First-Time Security Prompt (Gatekeeper):**
-   * **Right-click (or Control-click)** on `QuestionCategorizer.app` and choose **"Open"**.
-   * When prompted *"macOS cannot verify the developer"*, click **"Open"**. *(Only needed once).*
-5. **App Starts:** Safari or Chrome will automatically open with the application running!
+2. **Extract & Move:** Double-click the `.zip` file to extract `QuestionCategorizer.app`, then **drag it into your Applications folder**.
+   *(⚠️ Important: Do not run directly from Downloads—moving to Applications allows macOS security settings to work).*
+3. **First-Time Security Approval (macOS Sonoma / Sequoia / Tahoe):**
+   * Double-click `QuestionCategorizer.app` in Applications. When the security prompt appears, click **"Done"**.
+   * Open **System Settings → Privacy & Security → scroll to Security**.
+   * Click **"Open Anyway"** → enter your Mac password or Touch ID → click **"Open"**.
+   *(Only needed once! The app will open normally from then on).*
+   * **Quick Terminal shortcut (if button is grayed out):**
+     ```bash
+     xattr -cr /Applications/QuestionCategorizer.app
+     ```
+4. **App Starts:** Safari or Chrome will automatically open with the application running!
 
 ---
 

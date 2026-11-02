@@ -626,11 +626,23 @@
                         <li>Intel processors → <a href="https://github.com/our-silhouette/question-categorizer-desktop/releases/download/v1.0.1/QuestionCategorizer-macOS-Intel.zip"><strong>Intel Mac ZIP</strong></a></li>
                     </ul>
                 </li>
-                <li><strong>Double-click</strong> the ZIP to extract <code>QuestionCategorizer.app</code>.</li>
-                <li><strong>Drag</strong> it into your <strong>Applications</strong> folder.</li>
-                <li><strong>First launch:</strong> <em>Right-click</em> (or Control-click) the app → <em>"Open"</em> → click <em>"Open"</em> in the security prompt — only needed once.</li>
-                <li>Your browser opens automatically with the app ready.</li>
+                <li><strong>Extract &amp; Move:</strong> Double-click the ZIP to extract <code>QuestionCategorizer.app</code>, then <strong>drag it into your Applications folder</strong>.
+                    <br><span style="color:#b45309; font-size:12px; font-weight:600;">⚠️ Important: Do not run directly inside Downloads—moving to Applications ensures macOS security permissions work.</span>
+                </li>
+                <li><strong>First launch on macOS:</strong>
+                    <ul style="margin-top:6px; margin-left:16px;">
+                        <li>Double-click <code>QuestionCategorizer.app</code> in Applications. On the security popup, click <strong>"Done"</strong>.</li>
+                        <li>Open your Mac's <strong>System Settings → Privacy &amp; Security</strong>.</li>
+                        <li>Scroll down to the <strong>Security</strong> section and click <strong>"Open Anyway"</strong>.</li>
+                        <li>Enter your Mac password or Touch ID, then click <strong>"Open"</strong>.</li>
+                    </ul>
+                </li>
+                <li>The app starts, and your browser opens automatically ready to use! (Only needed once).</li>
             </ol>
+            <div style="background:#f1f5f9; border-left:3px solid #64748b; padding:10px 14px; border-radius:6px; margin-top:14px; font-size:12px; color:#334155;">
+                <strong>⚡ 3-Second Terminal Alternative:</strong> If you prefer the command line or if "Open Anyway" is grayed out, open Terminal and paste:<br>
+                <code style="display:inline-block; margin-top:5px; background:#e2e8f0; padding:3px 8px; border-radius:4px;">xattr -cr /Applications/QuestionCategorizer.app</code>
+            </div>
         </div>
     </div>
 
@@ -772,8 +784,13 @@
     </div>
 
     <div class="faq-item">
-        <div class="faq-q">❓ macOS says "cannot verify the developer" and won't open the app.</div>
-        <div class="faq-a"><strong>Right-click</strong> (or Control-click) the <code>.app</code> file → choose <strong>"Open"</strong> → click <strong>"Open"</strong> in the dialog. Only needed once.</div>
+        <div class="faq-q">❓ macOS says "cannot verify malware" or "Open Anyway" is grayed out.</div>
+        <div class="faq-a">
+            1. Make sure you <strong>moved the app into your Applications folder</strong> (macOS isolates and grays out permissions for apps run directly inside Downloads).<br>
+            2. Double-click the app once from Applications → click <strong>"Done"</strong>.<br>
+            3. Open <strong>System Settings → Privacy &amp; Security</strong> → scroll to <em>Security</em> → click <strong>"Open Anyway"</strong>.<br>
+            4. <em>Terminal alternative:</em> Open Terminal and run: <span class="code-box">xattr -cr /Applications/QuestionCategorizer.app</span>
+        </div>
     </div>
 
     <div class="faq-item">
