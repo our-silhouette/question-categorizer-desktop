@@ -18,15 +18,15 @@ Welcome to the **Question Categorizer Desktop App**! This guide explains how to 
 
 Download the package matching your operating system (no installation or setup required):
 
-* [**⬇️ Download for Windows (64-bit)**](https://github.com/our-silhouette/question-categorizer-desktop/releases/download/v1.0.1/QuestionCategorizer-Windows.zip) — `QuestionCategorizer-Windows.zip` (~134 MB)
-* [**⬇️ Download for macOS (Apple Silicon M1/M2/M3/M4)**](https://github.com/our-silhouette/question-categorizer-desktop/releases/download/v1.0.1/QuestionCategorizer-macOS-AppleSilicon.zip) — `QuestionCategorizer-macOS-AppleSilicon.zip` (~131 MB)
-* [**⬇️ Download for macOS (Intel Processors)**](https://github.com/our-silhouette/question-categorizer-desktop/releases/download/v1.0.1/QuestionCategorizer-macOS-Intel.zip) — `QuestionCategorizer-macOS-Intel.zip` (~137 MB)
+* [**⬇️ Download for Windows (64-bit)**](https://github.com/our-silhouette/question-categorizer-desktop/releases/download/v1.0.2/QuestionCategorizer-Windows.zip) — `QuestionCategorizer-Windows.zip` (~134 MB)
+* [**⬇️ Download for macOS (Apple Silicon M1/M2/M3/M4)**](https://github.com/our-silhouette/question-categorizer-desktop/releases/download/v1.0.2/QuestionCategorizer-macOS-AppleSilicon.zip) — `QuestionCategorizer-macOS-AppleSilicon.zip` (~131 MB)
+* [**⬇️ Download for macOS (Intel Processors)**](https://github.com/our-silhouette/question-categorizer-desktop/releases/download/v1.0.2/QuestionCategorizer-macOS-Intel.zip) — `QuestionCategorizer-macOS-Intel.zip` (~137 MB)
 
 ---
 
 ## 3. Windows Installation & Launch
 
-1. **Download:** Click [Download for Windows](https://github.com/our-silhouette/question-categorizer-desktop/releases/download/v1.0.1/QuestionCategorizer-Windows.zip) to get `QuestionCategorizer-Windows.zip`.
+1. **Download:** Click [Download for Windows](https://github.com/our-silhouette/question-categorizer-desktop/releases/download/v1.0.2/QuestionCategorizer-Windows.zip) to get `QuestionCategorizer-Windows.zip`.
 2. **Extract:** Right-click the `.zip` file and select **"Extract All..."**, then choose a folder (e.g. `Desktop` or `Documents`).
 3. **Launch:** Open the extracted folder and double-click:
    ```
@@ -42,20 +42,14 @@ Download the package matching your operating system (no installation or setup re
 ## 4. macOS Installation & Launch
 
 1. **Download:**
-   * For M1/M2/M3/M4 Macs: [Download Apple Silicon ZIP](https://github.com/our-silhouette/question-categorizer-desktop/releases/download/v1.0.1/QuestionCategorizer-macOS-AppleSilicon.zip)
-   * For Intel Macs: [Download Intel Mac ZIP](https://github.com/our-silhouette/question-categorizer-desktop/releases/download/v1.0.1/QuestionCategorizer-macOS-Intel.zip)
-2. **Extract & Move:** Double-click the `.zip` file to extract `QuestionCategorizer.app`, then **drag it into your Applications folder**.
-   *(⚠️ Important: Do not run directly from Downloads—moving to Applications allows macOS security settings to work).*
-3. **First-Time Security Approval (macOS Sonoma / Sequoia / Tahoe):**
-   * Double-click `QuestionCategorizer.app` in Applications. When the security prompt appears, click **"Done"**.
-   * Open **System Settings → Privacy & Security → scroll to Security**.
-   * Click **"Open Anyway"** → enter your Mac password or Touch ID → click **"Open"**.
-   *(Only needed once! The app will open normally from then on).*
-   * **Quick Terminal shortcut (if button is grayed out):**
-     ```bash
-     xattr -cr /Applications/QuestionCategorizer.app
-     ```
-4. **App Starts:** Safari or Chrome will automatically open with the application running!
+   * For M1/M2/M3/M4 Macs: [Download Apple Silicon ZIP](https://github.com/our-silhouette/question-categorizer-desktop/releases/download/v1.0.2/QuestionCategorizer-macOS-AppleSilicon.zip)
+   * For Intel Macs: [Download Intel Mac ZIP](https://github.com/our-silhouette/question-categorizer-desktop/releases/download/v1.0.2/QuestionCategorizer-macOS-Intel.zip)
+2. **Extract:** Double-click the downloaded `.zip` file to extract its contents.
+3. **Launch:** Inside the extracted folder, simply **double-click**:
+   ```
+   Start_QuestionCategorizer.command
+   ```
+4. **App Starts:** The launcher script automatically clears macOS security flags and starts the app. In a few seconds, Safari or Chrome will automatically open with Question Categorizer running and ready to use! *(No terminal typing or System Settings navigation required).*
 
 ---
 

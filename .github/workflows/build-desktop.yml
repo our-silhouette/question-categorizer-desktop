@@ -79,9 +79,11 @@ jobs:
 
       - name: Compress macOS Distribution (.app)
         run: |
+          chmod +x Start_QuestionCategorizer.command
+          cp Start_QuestionCategorizer.command dist/
           cp docs/Gemini_API_Key_Setup_Guide.html dist/
           cd dist
-          zip -r -y ../QuestionCategorizer-macOS-AppleSilicon.zip QuestionCategorizer.app Gemini_API_Key_Setup_Guide.html
+          zip -r -y ../QuestionCategorizer-macOS-AppleSilicon.zip QuestionCategorizer.app Start_QuestionCategorizer.command Gemini_API_Key_Setup_Guide.html
           cd ..
 
       - name: Upload macOS Apple Silicon Artifact
@@ -119,9 +121,11 @@ jobs:
 
       - name: Compress macOS Distribution (.app)
         run: |
+          chmod +x Start_QuestionCategorizer.command
+          cp Start_QuestionCategorizer.command dist/
           cp docs/Gemini_API_Key_Setup_Guide.html dist/
           cd dist
-          zip -r -y ../QuestionCategorizer-macOS-Intel.zip QuestionCategorizer.app Gemini_API_Key_Setup_Guide.html
+          zip -r -y ../QuestionCategorizer-macOS-Intel.zip QuestionCategorizer.app Start_QuestionCategorizer.command Gemini_API_Key_Setup_Guide.html
           cd ..
 
       - name: Upload macOS Intel Artifact
