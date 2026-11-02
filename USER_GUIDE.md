@@ -18,15 +18,15 @@ Welcome to the **Question Categorizer Desktop App**! This guide explains how to 
 
 Download the package matching your operating system (no installation or setup required):
 
-* [**⬇️ Download for Windows (64-bit)**](https://github.com/our-silhouette/question-categorizer-desktop/releases/download/v1.0.0/QuestionCategorizer-Windows.zip) — `QuestionCategorizer-Windows.zip` (~134 MB)
-* [**⬇️ Download for macOS (Apple Silicon M1/M2/M3/M4)**](https://github.com/our-silhouette/question-categorizer-desktop/releases/download/v1.0.0/QuestionCategorizer-macOS-AppleSilicon.zip) — `QuestionCategorizer-macOS-AppleSilicon.zip` (~131 MB)
-* [**⬇️ Download for macOS (Intel Processors)**](https://github.com/our-silhouette/question-categorizer-desktop/releases/download/v1.0.0/QuestionCategorizer-macOS-Intel.zip) — `QuestionCategorizer-macOS-Intel.zip` (~137 MB)
+* [**⬇️ Download for Windows (64-bit)**](https://github.com/our-silhouette/question-categorizer-desktop/releases/download/v1.0.1/QuestionCategorizer-Windows.zip) — `QuestionCategorizer-Windows.zip` (~134 MB)
+* [**⬇️ Download for macOS (Apple Silicon M1/M2/M3/M4)**](https://github.com/our-silhouette/question-categorizer-desktop/releases/download/v1.0.1/QuestionCategorizer-macOS-AppleSilicon.zip) — `QuestionCategorizer-macOS-AppleSilicon.zip` (~131 MB)
+* [**⬇️ Download for macOS (Intel Processors)**](https://github.com/our-silhouette/question-categorizer-desktop/releases/download/v1.0.1/QuestionCategorizer-macOS-Intel.zip) — `QuestionCategorizer-macOS-Intel.zip` (~137 MB)
 
 ---
 
 ## 3. Windows Installation & Launch
 
-1. **Download:** Click [Download for Windows](https://github.com/our-silhouette/question-categorizer-desktop/releases/download/v1.0.0/QuestionCategorizer-Windows.zip) to get `QuestionCategorizer-Windows.zip`.
+1. **Download:** Click [Download for Windows](https://github.com/our-silhouette/question-categorizer-desktop/releases/download/v1.0.1/QuestionCategorizer-Windows.zip) to get `QuestionCategorizer-Windows.zip`.
 2. **Extract:** Right-click the `.zip` file and select **"Extract All..."**, then choose a folder (e.g. `Desktop` or `Documents`).
 3. **Launch:** Open the extracted folder and double-click:
    ```
@@ -42,8 +42,8 @@ Download the package matching your operating system (no installation or setup re
 ## 4. macOS Installation & Launch
 
 1. **Download:**
-   * For M1/M2/M3/M4 Macs: [Download Apple Silicon ZIP](https://github.com/our-silhouette/question-categorizer-desktop/releases/download/v1.0.0/QuestionCategorizer-macOS-AppleSilicon.zip)
-   * For Intel Macs: [Download Intel Mac ZIP](https://github.com/our-silhouette/question-categorizer-desktop/releases/download/v1.0.0/QuestionCategorizer-macOS-Intel.zip)
+   * For M1/M2/M3/M4 Macs: [Download Apple Silicon ZIP](https://github.com/our-silhouette/question-categorizer-desktop/releases/download/v1.0.1/QuestionCategorizer-macOS-AppleSilicon.zip)
+   * For Intel Macs: [Download Intel Mac ZIP](https://github.com/our-silhouette/question-categorizer-desktop/releases/download/v1.0.1/QuestionCategorizer-macOS-Intel.zip)
 2. **Extract:** Double-click the `.zip` file to extract `QuestionCategorizer.app`.
 3. **Move:** Drag `QuestionCategorizer.app` into your **Applications** folder.
 4. **First-Time Security Prompt (Gatekeeper):**

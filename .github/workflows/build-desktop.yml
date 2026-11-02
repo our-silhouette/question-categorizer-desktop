@@ -41,7 +41,7 @@ jobs:
       - name: Compress Windows Distribution
         shell: pwsh
         run: |
-          Copy-Item -Recurse -Force docs dist/QuestionCategorizer/docs
+          Copy-Item "docs/Gemini_API_Key_Setup_Guide.html" dist/QuestionCategorizer/
           Compress-Archive -Path dist/QuestionCategorizer -DestinationPath QuestionCategorizer-Windows.zip
 
       - name: Upload Windows Artifact
@@ -79,10 +79,9 @@ jobs:
 
       - name: Compress macOS Distribution (.app)
         run: |
-          mkdir -p dist/docs
-          cp -r docs/ dist/docs/
+          cp docs/Gemini_API_Key_Setup_Guide.html dist/
           cd dist
-          zip -r -y ../QuestionCategorizer-macOS-AppleSilicon.zip QuestionCategorizer.app docs/
+          zip -r -y ../QuestionCategorizer-macOS-AppleSilicon.zip QuestionCategorizer.app Gemini_API_Key_Setup_Guide.html
           cd ..
 
       - name: Upload macOS Apple Silicon Artifact
@@ -120,10 +119,9 @@ jobs:
 
       - name: Compress macOS Distribution (.app)
         run: |
-          mkdir -p dist/docs
-          cp -r docs/ dist/docs/
+          cp docs/Gemini_API_Key_Setup_Guide.html dist/
           cd dist
-          zip -r -y ../QuestionCategorizer-macOS-Intel.zip QuestionCategorizer.app docs/
+          zip -r -y ../QuestionCategorizer-macOS-Intel.zip QuestionCategorizer.app Gemini_API_Key_Setup_Guide.html
           cd ..
 
       - name: Upload macOS Intel Artifact
