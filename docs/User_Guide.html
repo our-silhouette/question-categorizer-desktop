@@ -323,9 +323,115 @@
             .callout { page-break-inside: avoid; }
         }
 
+        /* ── Download Hub ── */
+        .download-hub {
+            background: linear-gradient(135deg, #f8f7ff 0%, #edf2f7 100%);
+            border: 2px solid #ddd6fe;
+            border-radius: 14px;
+            padding: 24px 28px;
+            margin-bottom: 30px;
+        }
+
+        .download-hub-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #4c1d95;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .download-hub-subtitle {
+            font-size: 14px;
+            color: #4b5563;
+            margin-bottom: 20px;
+        }
+
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .dl-card {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 18px 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .dl-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .dl-card-icon {
+            font-size: 26px;
+            margin-bottom: 8px;
+        }
+
+        .dl-card-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 4px;
+        }
+
+        .dl-card-desc {
+            font-size: 12px;
+            color: #6b7280;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .dl-card-meta {
+            font-size: 11px;
+            color: #9ca3af;
+            margin-bottom: 14px;
+        }
+
+        .btn-download {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 14px;
+            color: #ffffff !important;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 13px;
+            text-decoration: none;
+            text-align: center;
+            transition: opacity 0.2s;
+        }
+
+        .btn-download:hover {
+            opacity: 0.92;
+            text-decoration: none;
+        }
+
+        .btn-win {
+            background-color: #0078d4;
+        }
+
+        .btn-mac-arm {
+            background-color: #7c3aed;
+        }
+
+        .btn-mac-intel {
+            background-color: #334155;
+        }
+
         @media screen and (max-width: 768px) {
             body { padding: 20px; }
             .os-grid { grid-template-columns: 1fr; }
+            .download-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -346,7 +452,7 @@
     <ol>
         <li><a href="#what-is-it">What is Question Categorizer?</a></li>
         <li><a href="#requirements">System Requirements</a></li>
-        <li><a href="#install">Installation &amp; First Launch</a></li>
+        <li><a href="#install">Download, Installation &amp; Launch</a></li>
         <li><a href="#api-key">Getting Your Gemini API Key</a></li>
         <li><a href="#using">Using the App — Step by Step</a></li>
         <li><a href="#output">Understanding Your Results</a></li>
@@ -438,18 +544,75 @@
 
 <!-- SECTION 3 -->
 <section class="section" id="install">
-    <h2>3. Installation &amp; First Launch</h2>
+    <h2>3. Download, Installation &amp; Launch</h2>
+
+    <!-- DOWNLOAD HUB -->
+    <div class="download-hub">
+        <div class="download-hub-title">
+            <span>⬇️</span> Download Question Categorizer
+        </div>
+        <p class="download-hub-subtitle">
+            Choose the package that matches your computer. The app is completely self-contained—no Python, command line, or external dependencies required.
+        </p>
+
+        <div class="download-grid">
+            <!-- Windows Card -->
+            <div class="dl-card">
+                <div>
+                    <div class="dl-card-icon">🪟</div>
+                    <div class="dl-card-title">Windows 10 / 11</div>
+                    <div class="dl-card-desc">For all modern 64-bit Windows laptops and desktops.</div>
+                    <div class="dl-card-meta">ZIP &bull; ~134 MB &bull; Standalone .exe</div>
+                </div>
+                <a href="https://github.com/our-silhouette/question-categorizer-desktop/releases/download/v1.0.0/QuestionCategorizer-Windows.zip" 
+                   class="btn-download btn-win" 
+                   target="_blank">
+                    <span>⬇️</span> Download for Windows
+                </a>
+            </div>
+
+            <!-- Mac Apple Silicon Card -->
+            <div class="dl-card">
+                <div>
+                    <div class="dl-card-icon">🍏</div>
+                    <div class="dl-card-title">macOS Apple Silicon</div>
+                    <div class="dl-card-desc">For Macs with M1, M2, M3, or M4 chips (2020 or newer).</div>
+                    <div class="dl-card-meta">ZIP &bull; ~131 MB &bull; Native ARM64 .app</div>
+                </div>
+                <a href="https://github.com/our-silhouette/question-categorizer-desktop/releases/download/v1.0.0/QuestionCategorizer-macOS-AppleSilicon.zip" 
+                   class="btn-download btn-mac-arm" 
+                   target="_blank">
+                    <span>⬇️</span> Download (Apple Silicon)
+                </a>
+            </div>
+
+            <!-- Mac Intel Card -->
+            <div class="dl-card">
+                <div>
+                    <div class="dl-card-icon">⚙️</div>
+                    <div class="dl-card-title">macOS Intel</div>
+                    <div class="dl-card-desc">For Intel-based MacBooks, iMacs, and Mac minis.</div>
+                    <div class="dl-card-meta">ZIP &bull; ~137 MB &bull; Native x86_64 .app</div>
+                </div>
+                <a href="https://github.com/our-silhouette/question-categorizer-desktop/releases/download/v1.0.0/QuestionCategorizer-macOS-Intel.zip" 
+                   class="btn-download btn-mac-intel" 
+                   target="_blank">
+                    <span>⬇️</span> Download (Intel Mac)
+                </a>
+            </div>
+        </div>
+    </div>
 
     <div class="os-grid">
         <div class="os-card windows">
             <span class="os-badge windows">🪟 WINDOWS</span>
             <h3>Install &amp; Open on Windows</h3>
             <ol>
-                <li><strong>Download</strong> <code>QuestionCategorizer-Windows.zip</code></li>
-                <li><strong>Extract:</strong> Right-click the ZIP → <em>"Extract All…"</em> → choose a folder (Desktop or Documents works well)</li>
-                <li>Open the extracted folder and <strong>double-click</strong> <code>QuestionCategorizer.exe</code></li>
-                <li><strong>SmartScreen alert?</strong> Click <em>"More info"</em> then <em>"Run anyway"</em> — only needed once</li>
-                <li>A console window opens, then <strong>your browser automatically launches</strong> the app</li>
+                <li><strong>Download:</strong> Click the <strong>Download for Windows</strong> button above (or download <code>QuestionCategorizer-Windows.zip</code>).</li>
+                <li><strong>Extract:</strong> Right-click the ZIP → <em>"Extract All…"</em> → choose a folder (Desktop or Documents works well).</li>
+                <li>Open the extracted folder and <strong>double-click</strong> <code>QuestionCategorizer.exe</code>.</li>
+                <li><strong>SmartScreen alert?</strong> Click <em>"More info"</em> then <em>"Run anyway"</em> — only needed once.</li>
+                <li>A console window opens, then <strong>your browser automatically launches</strong> the app.</li>
             </ol>
         </div>
 
@@ -457,16 +620,16 @@
             <span class="os-badge mac">🍎 macOS</span>
             <h3>Install &amp; Open on Mac</h3>
             <ol>
-                <li><strong>Download</strong> the correct ZIP:
+                <li><strong>Download:</strong> Click the matching button above for your Mac:
                     <ul style="margin-top:6px; margin-left:16px;">
-                        <li>M1/M2/M3/M4 → <code>…-AppleSilicon.zip</code></li>
-                        <li>Intel → <code>…-Intel.zip</code></li>
+                        <li>M1/M2/M3/M4 chips → <a href="https://github.com/our-silhouette/question-categorizer-desktop/releases/download/v1.0.0/QuestionCategorizer-macOS-AppleSilicon.zip"><strong>Apple Silicon ZIP</strong></a></li>
+                        <li>Intel processors → <a href="https://github.com/our-silhouette/question-categorizer-desktop/releases/download/v1.0.0/QuestionCategorizer-macOS-Intel.zip"><strong>Intel Mac ZIP</strong></a></li>
                     </ul>
                 </li>
-                <li><strong>Double-click</strong> the ZIP to extract <code>QuestionCategorizer.app</code></li>
-                <li><strong>Drag</strong> it into your <strong>Applications</strong> folder</li>
-                <li><strong>First launch:</strong> <em>Right-click</em> the app → <em>"Open"</em> → click <em>"Open"</em> in the dialog — only needed once</li>
-                <li>Your browser opens automatically with the app ready</li>
+                <li><strong>Double-click</strong> the ZIP to extract <code>QuestionCategorizer.app</code>.</li>
+                <li><strong>Drag</strong> it into your <strong>Applications</strong> folder.</li>
+                <li><strong>First launch:</strong> <em>Right-click</em> (or Control-click) the app → <em>"Open"</em> → click <em>"Open"</em> in the security prompt — only needed once.</li>
+                <li>Your browser opens automatically with the app ready.</li>
             </ol>
         </div>
     </div>

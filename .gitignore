@@ -5,6 +5,8 @@ build_venv/
 
 # ZIP artifacts (downloaded from GitHub Actions)
 *.zip
+QuestionCategorizer-*/
+QuestionCategorizer/
 
 # Python cache
 __pycache__/

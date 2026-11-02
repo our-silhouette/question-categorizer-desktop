@@ -14,9 +14,19 @@ Welcome to the **Question Categorizer Desktop App**! This guide explains how to 
 
 ---
 
-## 2. Windows Installation & Launch
+## 2. Direct Downloads
 
-1. **Download:** Download `QuestionCategorizer-Windows.zip`.
+Download the package matching your operating system (no installation or setup required):
+
+* [**⬇️ Download for Windows (64-bit)**](https://github.com/our-silhouette/question-categorizer-desktop/releases/download/v1.0.0/QuestionCategorizer-Windows.zip) — `QuestionCategorizer-Windows.zip` (~134 MB)
+* [**⬇️ Download for macOS (Apple Silicon M1/M2/M3/M4)**](https://github.com/our-silhouette/question-categorizer-desktop/releases/download/v1.0.0/QuestionCategorizer-macOS-AppleSilicon.zip) — `QuestionCategorizer-macOS-AppleSilicon.zip` (~131 MB)
+* [**⬇️ Download for macOS (Intel Processors)**](https://github.com/our-silhouette/question-categorizer-desktop/releases/download/v1.0.0/QuestionCategorizer-macOS-Intel.zip) — `QuestionCategorizer-macOS-Intel.zip` (~137 MB)
+
+---
+
+## 3. Windows Installation & Launch
+
+1. **Download:** Click [Download for Windows](https://github.com/our-silhouette/question-categorizer-desktop/releases/download/v1.0.0/QuestionCategorizer-Windows.zip) to get `QuestionCategorizer-Windows.zip`.
 2. **Extract:** Right-click the `.zip` file and select **"Extract All..."**, then choose a folder (e.g. `Desktop` or `Documents`).
 3. **Launch:** Open the extracted folder and double-click:
    ```
@@ -29,11 +39,11 @@ Welcome to the **Question Categorizer Desktop App**! This guide explains how to 
 
 ---
 
-## 3. macOS Installation & Launch
+## 4. macOS Installation & Launch
 
 1. **Download:**
-   * For M1/M2/M3/M4 Macs: Download `QuestionCategorizer-macOS-AppleSilicon.zip`.
-   * For older Intel Macs: Download `QuestionCategorizer-macOS-Intel.zip`.
+   * For M1/M2/M3/M4 Macs: [Download Apple Silicon ZIP](https://github.com/our-silhouette/question-categorizer-desktop/releases/download/v1.0.0/QuestionCategorizer-macOS-AppleSilicon.zip)
+   * For Intel Macs: [Download Intel Mac ZIP](https://github.com/our-silhouette/question-categorizer-desktop/releases/download/v1.0.0/QuestionCategorizer-macOS-Intel.zip)
 2. **Extract:** Double-click the `.zip` file to extract `QuestionCategorizer.app`.
 3. **Move:** Drag `QuestionCategorizer.app` into your **Applications** folder.
 4. **First-Time Security Prompt (Gatekeeper):**
@@ -43,7 +53,7 @@ Welcome to the **Question Categorizer Desktop App**! This guide explains how to 
 
 ---
 
-## 4. How to Use the Application
+## 5. How to Use the Application
 
 ### Step 1: Enter your Gemini API Key
 * In the left sidebar under **⚙️ Configuration**, paste your Gemini API Key.
@@ -61,7 +71,7 @@ Welcome to the **Question Categorizer Desktop App**! This guide explains how to 
 
 ---
 
-## 5. How to Exit
+## 6. How to Exit
 
 * Close your browser tab.
 * In the background console window, press `Ctrl + C` or close the window to shut down the server.
